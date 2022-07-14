@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+.header{
+  font-family: 'Poppins',serif;
+  font-weight:bold;
+   
+  
+}
+.form-rounded{
+  border-radius: 1rem;
+  border-color: tomato;
+  width: 80%;
+  
+}
+.form-rounded2{
+  border-radius: 1rem;
+  background-color: tomato;
+  color: aliceblue;
+  width: 80%;
+
+}
+.bg{
+  
+  background-image: url(D:\MINI_PROJECT\calo\src\components\Login\log.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+.img-fluid{
+  height: 600px;
+}
+.sform{
+  background-color:white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+  position:absolute; 
+  left:950px; 
+  top:30px;
+
+}
+form{
+  background-color:white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+  position:absolute; 
+  left:950px; 
+  top:90px;
+
+}
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: rgb(232, 45, 12);
+  position: absolute;
+  height: 100%;
+  overflow: auto;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+h2{
+  color: aliceblue;
+  padding-top: 80px;
+  padding-right:160px ;
+}
+.name{
+  color: aliceblue;
+  padding-bottom: 50px ;
+}
+h5{
+  color: rgb(0, 0, 0);
+  padding-top: -60px;
+}
+h6{
+  color: rgb(255, 255, 255);
+  padding: 5px;
+}
+.roundrec{
+  padding-top: 60px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 28%;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(195, 27, 27);
+  stroke: azure;
+  stroke-width: 5px;
+}
+.cald{
+  padding-top: 15px;
+  margin-left: 28px;
+  width: 80%;
+  height: 30%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+}
+.CircularProgressbar{
+  padding: 20px;
+  width: 140px;
+  height: 140px;
+}
+.calo-text{
+  color: red;
+  font-weight: bold;
+
+}
+.navbar{
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  height: 8%;
+  align-items: flex-end;
+  text-align: end;
+  position:fixed;
+  z-index: 2;
+}
+.logout{
+  margin-left: 95%;
+  
+}
