@@ -5,6 +5,15 @@ const session = require('express-session');
 const path = require('path');
 const { appendFile } = require('fs');
 var app  = express();
+var cors = require('cors')
+const corsOptions ={
+	origin:'*', 
+	credentials:true,            //access-control-allow-credentials:true
+	optionSuccessStatus:200,
+ }
+ 
+ app.use(cors(corsOptions)) 
+
 //or native libpq bindings
 //var pg = require('pg').native
 
@@ -16,6 +25,7 @@ var server = app.listen(8080, function() {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(cors())
 let twt_="";
 let wt_="";
 let name_="";

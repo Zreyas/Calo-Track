@@ -1,9 +1,11 @@
 var pg = require('pg');
+var http = require('http');
 const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
 let alert = require('alert'); 
+var cors = require('cors');
 
 
 
@@ -40,6 +42,9 @@ client.connect(function(err) {
 
 const app = express();
 
+
+
+app.use(cors({ origin: true }));
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -66,7 +71,7 @@ app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + "/src/App.js"));
 });
 
-// http://localhost:3000/auth
+
 app.post('/authsn', function(request, response) {
 	// Capture the input fields
 	let username = request.body.user;
@@ -101,6 +106,16 @@ app.post('/authsn', function(request, response) {
 				name=results.rows[0].name;
 				wt=results.rows[0].cweight;
 				twt=results.rows[0].tweight;
+				var data={
+					name: name,
+					wt: wt,
+					twt:twt
+				};
+				http.createServer(function(req,res){
+					res.setHeader('Content-Type', 'application/json');
+					res.end(JSON.stringify(data));
+				}).listen(8081);
+				
 			} 		
 			response.end();
 		});
@@ -124,4 +139,3 @@ app.get('/homelog', function(request, response) {
 	}
 	response.end();
 });
-
