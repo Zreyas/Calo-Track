@@ -35,7 +35,7 @@ class Header extends Component {
                     
               
                     <form className=' pl-40 text-center align-items-center' action='http://localhost:8080/authsn' method='POST'>
-                    <h1>Login</h1>
+                    <h1 className='pt-3'>Login</h1>
                           <label className='pt-4 '> Username </label> <br></br>
                           <input type='text'className='form-rounded p-1' name="user" placeholder='  username' onChange={this.onNameChange}/>
                           <br></br>   <br></br>
