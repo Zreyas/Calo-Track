@@ -76,7 +76,7 @@ app.post('/authsn', function(request, response) {
 	// Capture the input fields
 	let username = request.body.user;
 	let password = request.body.pass;
-
+	console.log(username);
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
