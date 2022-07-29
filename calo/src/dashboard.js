@@ -11,6 +11,13 @@ var pcal=0;
 var pp=0;
 var pc=0;
 var pf=0;
+var fdata={
+    carbo: 0,
+    prot: 0,
+    fats: 0,
+    cal: 0,
+    calv: 0
+};
 
 let q=0;
 let foodn='';
@@ -28,12 +35,12 @@ const Dashboard = () => {
         carbo: 0,
         prot: 0,
         fats: 0,
-        cal: 0
-        
+        cal: 0,
+        calv:0
      });
 
-     useEffect(() => {
-        const url = "http://localhost:8086/";
+   {/*  useEffect(() => {
+        const url = "http://localhost:8083/food";
   
         const fetchData = async () => {
             try {
@@ -43,7 +50,7 @@ const Dashboard = () => {
                 const json = await response.json();
                 
   
-               
+               console.log("res ",json);
                console.log(json.carbo,json.cal,json.fats,json.prot);
                 var data={
                     carbo:Math.round((json.carbo*4*100)/2000),
@@ -61,7 +68,7 @@ const Dashboard = () => {
         };
   
         fetchData();
-    }, []);
+    }, []);  */}
 
 
   //fetch data from 8081
@@ -136,7 +143,7 @@ const Dashboard = () => {
     };
 
     let deleteItem= key =>{
-        
+    
        const allItems = items;
        allItems.splice(key,1);
        //this.setState({
@@ -146,24 +153,49 @@ const Dashboard = () => {
     };
  
     //foodtrack
-    const foodsub = (q,foodn) => {
+    const foodsub = async (q,foodn) => {
          console.log("food is",foodn);
          var item={
             foodn: foodn,
             q:q
         };
-        return fetch('http://localhost:8083/food', {
+
+      return fetch('http://localhost:8083/food', {
    method: 'POST',
    headers: {
      'Content-Type': 'application/json'
    },
    body: JSON.stringify({ item })
  })
-   .then(data => data.json())
+
+   //.then(data => console.log(data.json()))
+   //.then()
+   .then(function(response) {
+    return response.json();
+  })
+
+  .then(function(data) {
+    //var fd = JSON.parse(data);
+    console.log(data);
+    let carbo=fdata.carbo;
+    let prot=fdata.prot;
+    let fats=fdata.fats;
+    let cal=fdata.cal;
+    let calv=fdata.cal;
+    console.log("calorie=",calv);
+    fdata={
+        carbo:carbo+Math.round((data.carbo*4*100)/2000),
+        prot:prot+Math.round((data.prot*9*100)/2000),
+        fats:fats+Math.round((data.fats*9*100)/2000),
+        calv:calv+Math.round(data.cal),
+        cal:cal+Math.round((data.cal/2000) * 100),
+    }
+    setNutri(fdata);
+    return fdata;
+  })
 
         }
-
-
+      
 
         console.log("cal=",nutri.cal);
     console.log(food);
@@ -191,9 +223,9 @@ const Dashboard = () => {
     
         <div className="cald">
             <h5> Todays Calorie </h5>
-            <h5 className="calo-text"> 1390 cal </h5>
+            <h5 className="calo-text"> {fdata.calv}cal </h5>
 
-            <CircularProgressbar value={nutri.cal} text={`${nutri.cal}%`}      styles={buildStyles({
+            <CircularProgressbar value={nutri.cal} text={`${nutri.cal}%`} styles={buildStyles({
               textColor: "red",
               pathColor: "red",
               

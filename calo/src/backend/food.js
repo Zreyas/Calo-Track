@@ -35,8 +35,8 @@ var server = app.listen(8083, function() {
 	
 });
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'static')));
+//app.use(express.urlencoded({ extended: true }));
+//app.use(express.static(path.join(__dirname, 'static')));
 
 var conString = "postgres://wgcdamtr:XhzZYpo5gz6d-m1gsyiUtRMYz6HqyVQ6@jelani.db.elephantsql.com/wgcdamtr"
 var client = new pg.Client(conString);
@@ -49,6 +49,10 @@ client.connect(function(err) {
   }
 }); 
 
+//app.get('/login',function(req,response){
+//re
+//})
+
 app.post('/food', function(req, res) {
 	
 //console.log(req);
@@ -59,6 +63,10 @@ console.log(food);
     if(err) {
       return console.error('error running query', err);
     }
+    /*if(result=undefined){
+      return console.error('No food found');
+    }*/
+
     else{
     
       carbo=result.rows[0].carbo;
@@ -74,10 +82,7 @@ console.log(food);
       };
      console.log(carbo);  
      //sending to react
-  http.createServer(function(req,res){
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(data));
-}).listen(8086);
+     res.end(JSON.stringify(data));
 
     }
    
@@ -85,6 +90,10 @@ console.log(food);
     //client.end();
   }); 
  
+  // http.createServer(function(req,res){
+  //   res.setHeader('Content-Type', 'application/json');
+    
+  // }).listen(8086);
   
  
  }
