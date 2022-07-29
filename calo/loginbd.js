@@ -1,9 +1,34 @@
 var pg = require('pg');
+var http = require('http');
 const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
 let alert = require('alert'); 
+var cors = require('cors');
+var app  = express();
+
+//cors
+app.use(cors({origin: 'http://localhost:8080'}));
+
+app.use(function (req, res, next) {
+
+  // Website you wish to allow to connect
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8083/food');
+
+  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+  // Pass to next layer of middleware
+  next();
+});
 
 
 
@@ -38,8 +63,10 @@ client.connect(function(err) {
 }); 
 
 
-const app = express();
 
+
+
+app.use(cors({ origin: true }));
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -66,12 +93,12 @@ app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + "/src/App.js"));
 });
 
-// http://localhost:3000/auth
+
 app.post('/authsn', function(request, response) {
 	// Capture the input fields
 	let username = request.body.user;
 	let password = request.body.pass;
-
+	console.log(username);
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
@@ -101,6 +128,16 @@ app.post('/authsn', function(request, response) {
 				name=results.rows[0].name;
 				wt=results.rows[0].cweight;
 				twt=results.rows[0].tweight;
+				var data={
+					name: name,
+					wt: wt,
+					twt:twt
+				};
+				http.createServer(function(req,res){
+					res.setHeader('Content-Type', 'application/json');
+					res.end(JSON.stringify(data));
+				}).listen(8081);
+				
 			} 		
 			response.end();
 		});
@@ -124,4 +161,3 @@ app.get('/homelog', function(request, response) {
 	}
 	response.end();
 });
-
