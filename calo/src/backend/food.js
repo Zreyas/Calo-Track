@@ -7,6 +7,12 @@ var http = require('http');
 const { time } = require('console');
 
 
+let r1=0;
+let r2=0;
+let r3=0;
+
+console.log("random=",r1,r2,r3);
+
 
 let calot=0;
 let ca3=0;
@@ -79,6 +85,15 @@ client.connect(function(err) {
 
 app.post('/food', function(req, res) {
 	
+
+  
+  while(r1==r2 || r1==r3 || r2==r3 ){
+    r1=Math.round(Math.random() * (107 - 100) + 100);
+    r2=Math.round(Math.random() * (107 - 100) + 100);
+    r3=Math.round(Math.random() * (107 - 100) + 100);
+  }
+
+
 //console.log(req);
 food=req.body.item.foodn;
 console.log(food);
@@ -128,7 +143,7 @@ console.log(food);
  
 
   
-  client.query(` select ename,calb from exercise where eid=100`, function(err, result) {
+  client.query(` select ename,calb from exercise where eid='${r1}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -151,8 +166,8 @@ console.log(food);
     //client.end();
   }); 
   
-  
-  client.query(` select ename,calb from exercise where eid=101`, function(err, result) {
+ 
+  client.query(` select ename,calb from exercise where eid='${r2}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -176,7 +191,7 @@ console.log(food);
   }); 
   
 
-  client.query(` select ename,calb from exercise where eid=102`, function(err, result) {
+  client.query(` select ename,calb from exercise where eid='${r3}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
