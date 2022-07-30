@@ -16,7 +16,13 @@ var fdata={
     prot: 0,
     fats: 0,
     cal: 0,
-    calv: 0
+    calv: 0,
+    e1:"",
+    e2:"",
+    e3:"",
+    t1:"",
+    t2:"",
+    t3:""
 };
 
 let q=0;
@@ -36,7 +42,14 @@ const Dashboard = () => {
         prot: 0,
         fats: 0,
         cal: 0,
-        calv:0
+        calv:0,
+        e1:"",
+        e2:"",
+        e3:"",
+        t1:"",
+        t2:"",
+        t3:""
+
      });
 
    {/*  useEffect(() => {
@@ -142,14 +155,10 @@ const Dashboard = () => {
 
     };
 
-    let deleteItem= key =>{
-    
-       const allItems = items;
+    let deleteItem= async key =>{
+        const allItems = items;
        allItems.splice(key,1);
-       //this.setState({
-        setitems(allItems);
-       //})
-     
+       setitems(allItems);
     };
  
     //foodtrack
@@ -176,20 +185,35 @@ const Dashboard = () => {
 
   .then(function(data) {
     //var fd = JSON.parse(data);
-    console.log(data);
+    console.log("json",data);
     let carbo=fdata.carbo;
     let prot=fdata.prot;
     let fats=fdata.fats;
     let cal=fdata.cal;
-    let calv=fdata.cal;
+    let calv=fdata.calv;
+    
     console.log("calorie=",calv);
+    console.log("fcal=",fdata.calv,fdata.cal,fdata.carbo,fdata.fats,fdata.prot);
     fdata={
-        carbo:carbo+Math.round((data.carbo*4*100)/2000),
-        prot:prot+Math.round((data.prot*9*100)/2000),
-        fats:fats+Math.round((data.fats*9*100)/2000),
-        calv:calv+Math.round(data.cal),
-        cal:cal+Math.round((data.cal/2000) * 100),
+        carbo:(carbo+Math.round((data.carbo*4*100)/2000))*q,
+        prot:(prot+Math.round((data.prot*4*100)/2000))*q,
+        fats:(fats+Math.round((data.fats*9*100)/2000))*q,
+        cal:(cal+Math.round((data.cal/2000) * 100))*q,
+        calv:(calv+data.cal)*q,
+        e1:"",
+        e2:"",
+        e3:"",
+        t1:"",
+        t2:"",
+        t3:""
+
     }
+    console.log(data.e1,data.t1);
+    console.log(data.e2,data.t2);
+    console.log(data.e3,data.t3);
+
+
+    console.log("fcal=",fdata.calv,fdata.cal,fdata.carbo,fdata.fats,fdata.prot);
     setNutri(fdata);
     return fdata;
   })
@@ -197,7 +221,9 @@ const Dashboard = () => {
         }
       
 
-        console.log("cal=",nutri.cal);
+        //console.log("ncal=",nutri.calv,nutri.cal,nutri.carbo,nutri.fats,nutri.prot);
+        
+
     console.log(food);
    // console.log(items);
 //console.log(advice);
@@ -242,7 +268,7 @@ const Dashboard = () => {
       <form  onSubmit={storeItems}  className='todaysfoodsearch'>
       <input name="food" type="text" value={input}  onChange={handleChange}  placeholder='Enter Items'/>
       <div className="quantity">
-      <input type="text" name="quantity" placeholder='quantity'/>
+      <input type="number" name="quantity" placeholder='quantity'/>
           
       </div>
       <div>
