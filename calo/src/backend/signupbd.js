@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 //var pg = require('pg').native
 
 
-var server = app.listen(8080, function() {
+var server = app.listen(8089, function() {
     console.log('Ready on port %d', server.address().port);
 	
 });
@@ -62,7 +62,7 @@ let pass_="";
 app.post('/auth', function(req, res) {
 	
  
-  res.redirect('http://localhost:3000/dash');
+
   name_=req.body.fname;
   usr_=req.body.user;
   pass_=req.body.pass;
@@ -89,6 +89,7 @@ client.connect(function(err) {
     
        
      console.log("successfully inserted");  
+     res.redirect('http://localhost:3000/dash');
      
     }
    

@@ -136,7 +136,7 @@ h6{
   z-index: 2;
 }
 .logout{
-  margin-left: 95%;
+  margin-left: 1750%;
   
 }
 
@@ -496,4 +496,8 @@ h4{
   left: 525px;
   top:40px;
 
+}
+
+.maincontent::-webkit-scrollbar {
+  display: none;
 }

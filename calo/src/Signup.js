@@ -35,7 +35,7 @@ class Signup extends Component {
               
                     
               
-                    <form className='sform pl-40 text-center align-items-center ' action='http://localhost:8080/auth' method='POST'>
+                    <form className='sform pl-40 text-center align-items-center ' action='http://localhost:8089/auth' method='POST'>
                     <h1 className='pt-0'>Sign Up</h1>
                           <label className='pt-4'> Full Name </label> <br></br>
                           <input type='text'className='form-rounded p-1' name="fname" placeholder='  Full Name' onChange={this.onNameChange}/>
