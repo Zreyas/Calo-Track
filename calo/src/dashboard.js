@@ -381,30 +381,56 @@ const Dashboard = () => {
         <h5>Suggested exercise Just for You</h5>
         <div  className='ex1'>
             <img id="object1" src={p1}  alt="pic"/>
-            <h2  className='exnm'>{ex1}</h2>
-            <h3 className='extm'>{tx1} min</h3>
+            <h3  className='exnm'>{ex1}</h3>
+            <h3  className='extm'>{tx1} min</h3>
         </div>
 
         <div className='ex2'>
-        <img id="object2" src={p2}  alt="pic"/>
-            <h2 className='exnm2'>{ex2}</h2>
+        <img id="object2" src={p2} alt="pic"/>
+            <h3 className='exnm2'>{ex2}</h3>
             <h3 className='extm2'>{tx2} min</h3>
         </div>
 
         <div className='ex3'>
         <img id="object3" src={p3}  alt="pic"/>
-            <h2 className='exnm3'>{ex3}</h2>
+            <h3 className='exnm3'>{ex3}</h3>
             <h3 className='extm3'>{tx3} min</h3>
         </div>
       
       
       </div> 
+
+    
+
             
   </div>
 
 
 
   </div>
+        <div className='footer'>
+          
+            <div className='tname'>
+            <h4>
+            Designed & developed by Team-8
+            </h4>
+            <h4>
+              R.Sreyas
+            </h4>
+            <h4>
+              Rosmi Johnson
+            </h4>
+            <h4>
+              Tania Manoj
+            </h4>
+            <h4>
+              Sana TA
+            </h4>
+            </div>
+           
+
+        </div>
+
   </div>  
   
   );
