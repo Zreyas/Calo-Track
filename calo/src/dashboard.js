@@ -5,6 +5,27 @@ import { CircularProgressbar , buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useEffect } from "react";
+import push from './exercise png/push-up.png';
+import bic from './exercise png/bicycle.png';
+import run from './exercise png/running.png';
+import jump from './exercise png/jump.png';
+import crunch from './exercise png/crunch.png';
+import swim from './exercise png/swimming.png';
+
+
+
+
+
+var p1="";
+var p2="";
+var p3="";
+
+var ex1="";
+var ex2="";
+var ex3="";
+var tx1="";
+var tx2="";
+var tx3="";
 
 
 var pcal=0;
@@ -22,7 +43,10 @@ var fdata={
     e3:"",
     t1:"",
     t2:"",
-    t3:""
+    t3:"",
+    p1:"",
+    p2:"",
+    p3:""
 };
 
 let q=0;
@@ -48,7 +72,10 @@ const Dashboard = () => {
         e3:"",
         t1:"",
         t2:"",
-        t3:""
+        t3:"",
+        p1:"",
+        p2:"",
+        p3:""
 
      });
 
@@ -191,7 +218,15 @@ const Dashboard = () => {
     let fats=fdata.fats;
     let cal=fdata.cal;
     let calv=fdata.calv;
-    
+    ex1=data.e1;
+    ex2=data.e2;
+    ex3=data.e3;
+    tx1=data.t1;
+    tx2=data.t2;
+    tx3=data.t3;
+    p1=data.p1;
+    p2=data.p2;
+    p3=data.p3;
     console.log("calorie=",calv);
     console.log("fcal=",fdata.calv,fdata.cal,fdata.carbo,fdata.fats,fdata.prot);
     fdata={
@@ -208,16 +243,16 @@ const Dashboard = () => {
         t3:""
 
     }
-    console.log(data.e1,data.t1);
-    console.log(data.e2,data.t2);
-    console.log(data.e3,data.t3);
+    //console.log(data.e1,data.t1);
+    //console.log(data.e2,data.t2);
+    //console.log(data.e3,data.t3);
 
-
+    console.log("pic",p1)
     console.log("fcal=",fdata.calv,fdata.cal,fdata.carbo,fdata.fats,fdata.prot);
     setNutri(fdata);
     return fdata;
   })
-
+  
         }
       
 
@@ -225,8 +260,11 @@ const Dashboard = () => {
         
 
     console.log(food);
-   // console.log(items);
-//console.log(advice);
+
+    console.log("1st ex: ",ex1);
+    console.log(nutri.e2,nutri.t2);
+    console.log(nutri.e3,nutri.t3);
+
   return(
     
   
@@ -265,22 +303,23 @@ const Dashboard = () => {
 
 
    
-      <form  onSubmit={storeItems}  className='todaysfoodsearch'>
-      <input name="food" type="text" value={input}  onChange={handleChange}  placeholder='Enter Items'/>
+      <form  onSubmit={storeItems}>
+      <div className='todaysfoodsearch'>
+          <input name="food" type="text" value={input}  onChange={handleChange}  placeholder='Enter Items'/>
+      </div>
       <div className="quantity">
-      <input type="number" name="quantity" placeholder='quantity'/>
-          
+         <input type="number" name="quantity" placeholder='Quantity' /> 
       </div>
       <div>
          
-          <button className='add btn btn-basic' type='submit'>Add</button>
+          <button className='add btn btn-basic' type='submit'><h4>Add</h4></button>
       </div>
       
       </form>
 
 
       
-      
+     
 
       <div className="foodconsumedbox">
           <h7>Food consumed</h7>
@@ -288,13 +327,13 @@ const Dashboard = () => {
               {
               items.map((data, index) => (
                     <li key={index}>
-                        {data} <i className="fa-solid fa-trash" onClick={() => deleteItem(index)}></i>
+                       {data}{" x"}{q.value}<i className="fa-solid fa-trash" onClick={() => deleteItem(index)}></i>
                     </li>
               ))}
          </ul>         
 
 
-
+                
    
       <div className="carbohydrates">
           <CircularProgressbar value={nutri.carbo} text={`${nutri.carbo}%`}      styles={buildStyles({
@@ -302,7 +341,7 @@ const Dashboard = () => {
               pathColor: "white",
               trailColor: '#800000'
             })} />
-          <h4>carbohydarates</h4>
+          <h4>carbohydrates</h4>
       </div>  
 
       <div className="protiens">
@@ -331,7 +370,35 @@ const Dashboard = () => {
              
             })} />
           <h4>fats</h4>
-      </div>     
+      </div>    
+
+
+    {/*exercise*/}
+
+            
+      <div className='exercise text-center align-items-center'>
+     
+        <h5>Suggested exercise Just for You</h5>
+        <div  className='ex1'>
+            <img id="object1" src={p1}  alt="pic"/>
+            <h2  className='exnm'>{ex1}</h2>
+            <h3 className='extm'>{tx1} min</h3>
+        </div>
+
+        <div className='ex2'>
+        <img id="object2" src={p2}  alt="pic"/>
+            <h2 className='exnm2'>{ex2}</h2>
+            <h3 className='extm2'>{tx2} min</h3>
+        </div>
+
+        <div className='ex3'>
+        <img id="object3" src={p3}  alt="pic"/>
+            <h2 className='exnm3'>{ex3}</h2>
+            <h3 className='extm3'>{tx3} min</h3>
+        </div>
+      
+      
+      </div> 
             
   </div>
 
@@ -345,8 +412,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
-
-
-
-
-

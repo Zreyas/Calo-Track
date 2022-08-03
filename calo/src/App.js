@@ -25,14 +25,17 @@ function App() {
   return (
      <BrowserRouter>
       <Switch>
+        
         <Route exact path="/">
           <Header/>
         </Route>
+        
         <Route exact path="/Signup">
          
           <Signup/>
           
         </Route>
+        
         <Route exact path="/dash">
           <Dashboard/>
           <div className="container1" ref={container}></div>
