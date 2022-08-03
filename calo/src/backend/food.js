@@ -22,6 +22,11 @@ let e3=0;
 let t1=0;
 let t2=0;
 let t3=0;
+let p1="";
+let p2="";
+let p3="";
+
+
 var data={
         carbo:0,
         prot:0,
@@ -32,7 +37,10 @@ var data={
         e3:"",
         t1:"",
         t2:"",
-        t3:""
+        t3:"",
+        p1:"",
+        p2:"",
+        p3:""
 
 };
 //cors
@@ -143,7 +151,7 @@ console.log(food);
  
 
   
-  client.query(` select ename,calb from exercise where eid='${r1}'`, function(err, result) {
+  client.query(` select ename,calb,pic from exercise where eid='${r1}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -155,8 +163,11 @@ console.log(food);
       
       t1=result.rows[0].calb;
       e1=result.rows[0].ename;
-     console.log(e1,t1);
+      p1=result.rows[0].pic;
+      data.p1=p1;
+     console.log(e1,t1,p1);
      data.e1=e1;
+     
      //sending to react
      //res.end(JSON.stringify(data));
 
@@ -167,7 +178,7 @@ console.log(food);
   }); 
   
  
-  client.query(` select ename,calb from exercise where eid='${r2}'`, function(err, result) {
+  client.query(` select ename,calb,pic from exercise where eid='${r2}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -179,8 +190,11 @@ console.log(food);
       
       t2=result.rows[0].calb;
       e2=result.rows[0].ename;
+      p2=result.rows[0].pic;
+      data.p2=p2;
      console.log(e2);
      data.e2=e2;
+     
      //sending to react
      //res.end(JSON.stringify(data));
 
@@ -191,7 +205,7 @@ console.log(food);
   }); 
   
 
-  client.query(` select ename,calb from exercise where eid='${r3}'`, function(err, result) {
+  client.query(` select ename,calb,pic from exercise where eid='${r3}'`, function(err, result) {
     if(err) {
       return console.error('error running query', err);
     }
@@ -203,6 +217,9 @@ console.log(food);
       
       t3=result.rows[0].calb;
       e3=result.rows[0].ename;
+      p3=result.rows[0].pic;
+      data.p3=p3;
+
      console.log(e3,t3);
      data.e3=e3;
      //sending to react
