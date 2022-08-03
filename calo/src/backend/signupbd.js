@@ -89,7 +89,7 @@ client.connect(function(err) {
     
        
      console.log("successfully inserted");  
-     res.redirect('http://localhost:3000/dash');
+     res.redirect('http://localhost:3000/');
      
     }
    
