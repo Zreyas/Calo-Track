@@ -272,8 +272,8 @@ const Dashboard = () => {
 
 <div className="navbar">
 
-            <button className="btn btn-light logout">
-                Logout </button>
+           <a href="http://localhost:3000/"><button className=" btn btn-light logout" >Logout </button></a> 
+                
 </div>
 
  <div className="sidebar tex-center align-items-center">
