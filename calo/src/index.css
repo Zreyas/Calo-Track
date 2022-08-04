@@ -513,7 +513,7 @@ h4{
  
   position: absolute;
   left: 525px;
-  top: 90px;
+  top:90px;
 
 }
 
@@ -534,4 +534,18 @@ h4{
   left:720px;
   top:60px;
   margin-top: -20px;
+}
+
+.SearchIcon{
+  position: absolute;
+  margin-left: 80px;
+  margin-top: 43px;
+}
+
+
+
+.CameraIcon{
+  position: absolute;
+  margin-left: 110px;
+  margin-top: 43px;
 }
