@@ -11,6 +11,9 @@ import run from './exercise png/running.png';
 import jump from './exercise png/jump.png';
 import crunch from './exercise png/crunch.png';
 import swim from './exercise png/swimming.png';
+import SearchIcon from '@mui/icons-material/Search';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import FoodData from './foodname.json';
 
 
 
@@ -306,7 +309,16 @@ const Dashboard = () => {
       <form  onSubmit={storeItems}>
       <div className='todaysfoodsearch'>
           <input name="food" type="text" value={input}  onChange={handleChange}  placeholder='Enter Items'/>
+      
+          <div className='SearchIcon'>
+              <SearchIcon />
+          </div>
+          <div className='CameraIcon'>
+               <PhotoCameraIcon />
+          </div>
       </div>
+
+
       <div className="quantity">
          <input type="number" name="quantity" placeholder='Quantity' /> 
       </div>
